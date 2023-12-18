@@ -27,7 +27,7 @@ class Queue {
       this.head = node;
       this.tail = node;
     } else {
-      this.head.next = node;
+      this.tail.next = node;
       this.tail = node;
     }
   }
@@ -37,11 +37,14 @@ class Queue {
       return null;
     }
     
+    const removedValue = this.head.value;
     this.head = this.head.next;
+
     if (!this.head) {
       this.tail = null;
     }
-    return this.head;
+  
+    return removedValue;
   }
   getUnderlyingList() {
     return this.head;
